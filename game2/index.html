@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+       
+</head>
+<body>
+    <div id="man">
+         Привет мир
+    </div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+
+$( document ).ready(function() {
+    $("#man") .css( "width","200px");    
+    $("#man") .css( "height","20px");
+    $("#man") .css( "position","absolute");
+    $("#man") .css( "top","10px");
+    $("#man") .css( "left","550px");
+    $("#man") .css( "border","1px solid green");
+
+var sec = 0;
+var width = 200;
+
+function func() {
+    sec++;
+    $("#man") .css( "top",sec*5+"px");
+    console.log(sec);
+}
+
+setInterval(func, 1000);
+
+});
+</script>
