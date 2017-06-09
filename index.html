@@ -27,6 +27,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Обо мне</a>
           </li>
+          <li class="nav-item">
+            <a id="production" class="nav-link" href="https://kair4ik.github.io/" target="_blank">Боевой</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -118,5 +121,13 @@
     </div>
   </div>
 </body>
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<script>
+  $(document).ready(function () {
+    if (document.domain != 'localhost') {
+      $("#production").hide();
+    }
+  });
+</script>
 
 </html>
