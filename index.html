@@ -180,18 +180,18 @@
 </footer>
 
 <script>
-
+	var passwordHash = "0f4ea2f1f2770cde4f4b87cbbc0c5c88";
 	var password = localStorage.getItem('password');
 	console.log("password", password);
 	if (password == null) {
 		var txt;
 		var pass = prompt("Введите пароль:", "");
-		if (pass == null || pass == "") {
+		if (pass == null || pass === "") {
 			txt = "User cancelled the prompt.";
 		} else {
 			var md5Hash = CryptoJS.MD5(pass);
 			console.log(md5Hash.toString());
-			if (md5Hash.toString() == "011a63d011f2c784e17f0ddc48bb02fe") {
+			if (md5Hash.toString() === passwordHash) {
 				localStorage.setItem('password',pass);
 				document.getElementById("mainBlock").style.display = "block";
 			} else {
@@ -201,8 +201,22 @@
 	} else {
 		var md5Hash = CryptoJS.MD5(password);
 		console.log(md5Hash.toString());
-		if (md5Hash.toString() == "011a63d011f2c784e17f0ddc48bb02fe") {
+		if (md5Hash.toString() === passwordHash) {
 			document.getElementById("mainBlock").style.display = "block";
+		} else {
+			var pass = prompt("Введите пароль:", "");
+			if (pass == null || pass === "") {
+				txt = "User cancelled the prompt.";
+			} else {
+				var md5Hash = CryptoJS.MD5(pass);
+				console.log(md5Hash.toString());
+				if (md5Hash.toString() === passwordHash) {
+					localStorage.setItem('password',pass);
+					document.getElementById("mainBlock").style.display = "block";
+				} else {
+					alert("Неверный пароль");
+				}
+			}
 		}
 	}
 
