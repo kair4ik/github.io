@@ -1,181 +1,62 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
-
-	<title> Biomer.kz </title>
-
-	<!-- Bootstrap core CSS -->
-	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
-	<!-- Custom styles for this template -->
-	<link href="album.css" rel="stylesheet">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js" crossorigin="anonymous"></script>
-
-
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
 </head>
 
-<body  id="mainBlock" style="display: none">
-<header>
-	<div class="navbar navbar-dark bg-dark box-shadow">
-		<div class="container d-flex justify-content-between">
-			<a href="#" class="navbar-brand d-flex align-items-center">
-				<strong>Biomer.kz стартовая страница</strong>
-			</a>
-		</div>
-	</div>
-</header>
-
-<main role="main" >
-
-	<section class="jumbotron text-center">
-
-
-		<div class="album py-5">
-			<div class="container">
-				<div class="row">
-			
-					<div class="col-md-4">
-						<a href="https://admin.biomertest.ml/" target="_blank">
-							<div class="card mb-4 box-shadow">
-								<div>
-									<img src="img/devBack.png">
-								</div>
-								<div class="card-body">
-									<p class="card-text">Админка.</p>
-								</div>
-							</div>
-						</a>
-					</div>
-
-
-					<div class="col-md-4">
-						<a href="https://biomertest.ml/"  target="_blank">
-							<div class="card mb-4 box-shadow">
-								<div>
-									<img src="img/devFront.png">
-								</div>
-								<div class="card-body">
-									<p class="card-text">Демо.</p>
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-
-				<hr style="border: 5px solid black;">
-				<br>
-				<div class="row">
-					<div class="col-md-4">
-						<a href="https://admin.biomer.kz/user/login" target="_blank">
-							<div class="card mb-4 box-shadow">
-								<div>
-									<img src="img/prodBack.png">
-								</div>
-								<div class="card-body">
-									<p class="card-text">Админка.</p>
-								</div>
-							</div>
-						</a>
-					</div>
-					
-					<div class="col-md-4">
-						<a href="https://demo.biomer.kz/" target="_blank">
-						<div class="card mb-4 box-shadow">
-							<div>
-								<img src="img/prodFront.png">
-							</div>
-							<div class="card-body">
-								<p class="card-text">Демо.</p>
-							</div>
-						</div>
-						</a>
-					</div>
-
-					<div class="col-md-4">
-						<a href="https://biomer.kz/" target="_blank">
-							<div class="card mb-4 box-shadow">
-								<div>
-									<img src="img/prodFront.png">
-								</div>
-								<div class="card-body">
-									<p class="card-text">Лэндинг.</p>
-								</div>
-							</div>
-						</a>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</section>
-</main>
-
-<footer class="text-muted">
-	<div class="container">
-		<p class="float-right">
-			<a href="#">Back to top</a>
-		</p>
-		<p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-		<p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
-	</div>
-</footer>
-
-<script>
-	var passwordHash = "804f938535f5eb7eb2498ec4fac3ed23";
-	var password = localStorage.getItem('password');
-	console.log("password", password);
-	if (password == null) {
-		var txt;
-		var pass = prompt("Введите пароль:", "");
-		if (pass == null || pass === "") {
-			txt = "User cancelled the prompt.";
-		} else {
-			var md5Hash = CryptoJS.MD5(pass);
-			console.log(md5Hash.toString());
-			if (md5Hash.toString() === passwordHash) {
-				localStorage.setItem('password',pass);
-				document.getElementById("mainBlock").style.display = "block";
-			} else {
-				alert("Неверный пароль");
-			}
-		}
-	} else {
-		var md5Hash = CryptoJS.MD5(password);
-		console.log(md5Hash.toString());
-		if (md5Hash.toString() === passwordHash) {
-			document.getElementById("mainBlock").style.display = "block";
-		} else {
-			var pass = prompt("Введите пароль:", "");
-			if (pass == null || pass === "") {
-				txt = "User cancelled the prompt.";
-			} else {
-				var md5Hash = CryptoJS.MD5(pass);
-				console.log(md5Hash.toString());
-				if (md5Hash.toString() === passwordHash) {
-					localStorage.setItem('password',pass);
-					document.getElementById("mainBlock").style.display = "block";
-				} else {
-					alert("Неверный пароль");
-				}
-			}
-		}
-	}
-
-
-	console.log(pass);
-document.getElementById("mainBlock").style.display = "block";
-
-
-</script>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<body>
+  <div class="container">
+    <video class="input_video"></video>
+    <canvas class="output_canvas" width="1280px" height="720px"></canvas>
+  </div>
 </body>
 </html>
+
+<script type="module">
+const videoElement = document.getElementsByClassName('input_video')[0];
+const canvasElement = document.getElementsByClassName('output_canvas')[0];
+const canvasCtx = canvasElement.getContext('2d');
+
+function onResults(results) {
+  canvasCtx.save();
+  canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+  canvasCtx.drawImage(
+      results.image, 0, 0, canvasElement.width, canvasElement.height);
+  if (results.multiFaceLandmarks) {
+    for (const landmarks of results.multiFaceLandmarks) {
+      drawConnectors(canvasCtx, landmarks, FACEMESH_TESSELATION,
+                     {color: '#C0C0C070', lineWidth: 1});
+      drawConnectors(canvasCtx, landmarks, FACEMESH_RIGHT_EYE, {color: '#FF3030'});
+      drawConnectors(canvasCtx, landmarks, FACEMESH_RIGHT_EYEBROW, {color: '#FF3030'});
+      drawConnectors(canvasCtx, landmarks, FACEMESH_LEFT_EYE, {color: '#30FF30'});
+      drawConnectors(canvasCtx, landmarks, FACEMESH_LEFT_EYEBROW, {color: '#30FF30'});
+      drawConnectors(canvasCtx, landmarks, FACEMESH_FACE_OVAL, {color: '#E0E0E0'});
+      drawConnectors(canvasCtx, landmarks, FACEMESH_LIPS, {color: '#E0E0E0'});
+    }
+  }
+  canvasCtx.restore();
+}
+
+const faceMesh = new FaceMesh({locateFile: (file) => {
+  return `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`;
+}});
+faceMesh.setOptions({
+  maxNumFaces: 1,
+  minDetectionConfidence: 0.5,
+  minTrackingConfidence: 0.5
+});
+faceMesh.onResults(onResults);
+
+const camera = new Camera(videoElement, {
+  onFrame: async () => {
+    await faceMesh.send({image: videoElement});
+  },
+  width: 1280,
+  height: 720
+});
+camera.start();
+</script>
